@@ -23,7 +23,13 @@
                     <th scope="row">{{$item['id']}}</th>
                     <td>{{$item["user"]['name']}}</td>
                     <td>{{$item["type"]}}</td>
-                    <td>{{$item["created_at"]}}</td>
+
+
+                    <td>
+                        <time data-toggle="tooltip" data-placement="top" title="{{$item['created_at']}}" datetime="{{$item['created_at']}}">July 07, 2016</time>
+
+
+                    </td>
                     <td style="width:10px;">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <div class="dropdown open">

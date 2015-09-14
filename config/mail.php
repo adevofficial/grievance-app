@@ -56,10 +56,12 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-replay@cep.ac.in'),
+        'name' => env('MAIL_FROM_NAME', 'Grievance App'),
     ],
 
+
+    'reply_to' => ['address' => 'no-replay@cep.ac.in', 'name' => 'Grievance App'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

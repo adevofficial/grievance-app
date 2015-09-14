@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Complient;
 use App\ComplientStatus;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\NewComplaint;
+use Illuminate\Support\Facades\Mail;
+use App\Maper;
 
 class ComplientController extends Controller
 {
@@ -74,6 +77,9 @@ class ComplientController extends Controller
         $newComplient = new Complient($input);
 
         Auth::user()->complients()->save($newComplient);
+        $users = Maper::with(['user'])->get()->pluck(['user']);
+
+        Mail::to($users)->queue(new NewComplaint($newComplient));
 
         return redirect()->back();
     }
