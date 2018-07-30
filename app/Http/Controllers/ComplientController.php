@@ -17,8 +17,18 @@ class ComplientController extends Controller
     {
         $allComplaints = Complient::paginate(10);
         $formSideBox = $request->query("form");
-
         $formSideData = [];
+
+        switch ($formSideBox) {
+            case 'view':
+                $cid = $request->query('complient_id');
+                $ViewComplient = Complient::with('status')->find($cid);
+                $formSideData["ViewComplient"] = $ViewComplient;
+                break;
+
+            default:
+                break;
+        }
         return view("complaint.index_complaint")->with([
             "allComplaints" => $allComplaints,
             "formSideBox" => $formSideBox,
