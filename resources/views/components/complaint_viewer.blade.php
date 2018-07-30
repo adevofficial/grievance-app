@@ -30,7 +30,8 @@
 <div class="border p-2 px-3 mt-2 bg-light rounded">
 
     <form action="" method="post">
-
+        {{ csrf_field() }}
+        <input type="hidden" name="complient_id">
         <div class="form-group">
             <label for="">Status</label>
             <select name="status" id="" class="form-control">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Complient;
-
+use App\ComplientStatus;
 
 class ComplientController extends Controller
 {
@@ -98,5 +98,13 @@ class ComplientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function status_create(Request $request)
+    {
+        $newStatus = new ComplientStatus($request->only(['status', 'status_body']));
+        $newStatus->cid = $request->input("complient_id");
+        $newStatus->save();
+        redirect()->back();
     }
 }
