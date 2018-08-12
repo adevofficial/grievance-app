@@ -1,0 +1,9 @@
+php artisan make:migration:schema create_complients_table --schema="subject:string, category:string, message:text"
+
+
+username:string
+body:text
+age:integer
+published_at:date
+excerpt:text:nullable
+email:string:unique:default('foo@example.com')
