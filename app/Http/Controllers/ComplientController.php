@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Complient;
+
 
 class ComplientController extends Controller
 {
@@ -34,8 +36,16 @@ class ComplientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $input = $request->only(['subject', 'messgae', 'category']);
+
+        $newComplient = new Complient($input);
+
+        $newComplient->save();
+
+        redirect()->back();
     }
+
 
     /**
      * Display the specified resource.
