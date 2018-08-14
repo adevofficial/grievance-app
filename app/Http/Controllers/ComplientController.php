@@ -37,13 +37,13 @@ class ComplientController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->only(['subject', 'messgae', 'category']);
+        $input = $request->only(['subject', 'message', 'category']);
 
         $newComplient = new Complient($input);
 
         $newComplient->save();
 
-        redirect()->back();
+        return redirect()->back();
     }
 
 
