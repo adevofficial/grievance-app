@@ -15,7 +15,8 @@ class ComplientController extends Controller
      */
     public function index()
     {
-        //
+        $allComplaints = Complient::all();
+        return $allComplaints;
     }
 
     /**
