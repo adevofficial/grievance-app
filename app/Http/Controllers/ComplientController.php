@@ -15,8 +15,9 @@ class ComplientController extends Controller
      */
     public function index()
     {
-        $allComplaints = Complient::all();
-        return $allComplaints;
+        $allComplaints = Complient::paginate(1);
+
+        return view("complaint.index_complaint")->with(["allComplaints" => $allComplaints]);
     }
 
     /**
