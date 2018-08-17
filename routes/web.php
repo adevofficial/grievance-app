@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('/complient', 'ComplientController');
-
+Route::resource('/user', 'UserController');

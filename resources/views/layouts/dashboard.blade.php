@@ -36,7 +36,7 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ action('ComplientController@index') }}">
                             <i class="fa fa-file-text" aria-hidden="true"></i>
 
               Complients

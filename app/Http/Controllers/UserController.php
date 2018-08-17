@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Complient;
+use App\User;
 
-
-class ComplientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class ComplientController extends Controller
      */
     public function index()
     {
-        $allComplaints = Complient::paginate(10);
-
-        return view("complaint.index_complaint")->with(["allComplaints" => $allComplaints]);
+        $allUsers = User::paginate(10);
+        return $allUsers;
     }
 
     /**
@@ -38,16 +36,8 @@ class ComplientController extends Controller
      */
     public function store(Request $request)
     {
-
-        $input = $request->only(['subject', 'message', 'category']);
-
-        $newComplient = new Complient($input);
-
-        $newComplient->save();
-
-        return redirect()->back();
+        //
     }
-
 
     /**
      * Display the specified resource.
