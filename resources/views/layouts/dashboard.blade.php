@@ -30,7 +30,7 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ action('UserController@index') }}">
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
               Users Manage
             </a>

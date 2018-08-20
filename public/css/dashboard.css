@@ -87,3 +87,10 @@
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
+
+tr .btn-group {
+  visibility: hidden;
+}
+tr:hover .btn-group {
+  visibility: visible;
+}
