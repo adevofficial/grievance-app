@@ -19,7 +19,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fa fa-file" aria-hidden="true"></i>
-              Complient Managers
+              Maper
             </a>
                     </li>
 
