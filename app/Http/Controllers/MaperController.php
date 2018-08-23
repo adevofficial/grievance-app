@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Maper;
 
 class MaperController extends Controller
 {
@@ -13,7 +14,9 @@ class MaperController extends Controller
      */
     public function index()
     {
-        //
+        $allMapers = Maper::with("user")->paginate(10);
+        // return $allMapers;
+        return view("maper.index_maper")->with(["allMapers" => $allMapers]);
     }
 
     /**

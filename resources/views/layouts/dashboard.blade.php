@@ -17,7 +17,7 @@
             </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ action('MaperController@index',['id'=>'1']) }}">
                             <i class="fa fa-file" aria-hidden="true"></i>
               Maper
             </a>
