@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Maper;
+use App\User;
 
 class MaperController extends Controller
 {
@@ -12,11 +13,28 @@ class MaperController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $allMapers = Maper::with("user")->paginate(10);
         // return $allMapers;
-        return view("maper.index_maper")->with(["allMapers" => $allMapers]);
+        $formSideBox = $request->query("form");
+        $formSideData = [];
+
+        switch ($formSideBox) {
+            case 'create':
+                $uid = $request->query("user_id");
+                $userData = User::find($uid);
+                $formSideData = ["userData" => $userData];
+                break;
+            default:
+                break;
+        }
+
+        return view("maper.index_maper")->with([
+            "allMapers" => $allMapers,
+            "formSideBox" => $formSideBox,
+            "formSideData" => $formSideData
+        ]);
     }
 
     /**
