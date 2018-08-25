@@ -27,6 +27,7 @@ class MaperController extends Controller
                 $formSideData = ["userData" => $userData];
                 break;
             default:
+                $formSideBox = null;
                 break;
         }
 
@@ -55,7 +56,10 @@ class MaperController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newMaper = new Maper($request->only(['type']));
+        $newMaper->uid = $request->input('user_id');
+        $newMaper->save();
+        return redirect()->action("MaperController@index");
     }
 
     /**

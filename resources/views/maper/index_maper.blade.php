@@ -1,5 +1,6 @@
 @extends('layouts.dashboard') 
 @section('content')
+
 <div class="row h-100">
 
     <div class="col-8">
@@ -25,7 +26,7 @@
                     <td>{{$item["created_at"]}}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{action('MaperController@create')}}" type="button" class="btn btn-success">Open</a>
+                            <a href="{{action('MaperController@create')}}" class="btn btn-success">Open</a>
                         </div>
                     </td>
                 </tr>

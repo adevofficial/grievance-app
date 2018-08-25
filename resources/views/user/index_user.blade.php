@@ -22,6 +22,7 @@
             <td>{{$item["created_at"]}}</td>
             <td style="width:100px">
                 <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-primary" href="{{ action('MaperController@index', ['user_id'=>$item['id'],'form'=>'create']) }}">Map</a>
                     <button type="button" class="btn btn-success">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                         View</button>
