@@ -13,11 +13,17 @@ class ComplientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $allComplaints = Complient::paginate(10);
+        $formSideBox = $request->query("form");
 
-        return view("complaint.index_complaint")->with(["allComplaints" => $allComplaints]);
+        $formSideData = [];
+        return view("complaint.index_complaint")->with([
+            "allComplaints" => $allComplaints,
+            "formSideBox" => $formSideBox,
+            "formSideData" => $formSideData
+        ]);
     }
 
     /**

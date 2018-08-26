@@ -40,7 +40,7 @@
             {{$allMapers->links("vendor.pagination.bootstrap-4")}}
         </div>
     </div>
-    <div class="col-4 border-left">
+    <div class="col-4 border-left pt-2">
     @includeWhen($formSideBox=="create",'components.maper_form',["formSideData"=>$formSideData])
     </div>
 </div>

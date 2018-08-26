@@ -1,4 +1,4 @@
-<form class="mt-2" action="{{ action('MaperController@store') }}" method="post">
+<form class="" action="{{ action('MaperController@store') }}" method="post">
     <h4>Create Maper</h4>
     <hr> {{ csrf_field() }}
     <div>
