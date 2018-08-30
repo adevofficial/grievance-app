@@ -42,6 +42,7 @@
         </div>
     </div>
     <div class="col-4 border-left pt-2">
+    @include('components.complaint_viewer')
     @includeWhen($formSideBox=="create",'components.complaint_form_sub',["formSideData"=>$formSideData])
     </div>
 </div>
