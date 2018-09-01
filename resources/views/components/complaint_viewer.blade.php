@@ -10,33 +10,37 @@
                 Subject
             </div>
             <div>
-                Subject text
+                {{$formSideData['ViewComplient']['subject']}}
             </div>
         </div>
 
         <div>
             <div class="font-weight-bold">Category</div>
-            <div>Category text</div>
+            <div>
+                {{$formSideData['ViewComplient']['category']}}
+            </div>
         </div>
     </div>
 
     <div>
         <div class="font-weight-bold">Message</div>
-        <div>Message text</div>
+        <div>
+            {{$formSideData['ViewComplient']['message']}}
+        </div>
     </div>
 </div>
 
 
 <div class="border p-2 px-3 mt-2 bg-light rounded">
 
-    <form action="" method="post">
+    <form action="{{ action('ComplientController@status_create') }}" method="post">
         {{ csrf_field() }}
-        <input type="hidden" name="complient_id">
+        <input type="hidden" name="complient_id" value="{{$formSideData['ViewComplient']['id']}}">
         <div class="form-group">
             <label for="">Status</label>
             <select name="status" id="" class="form-control">
 
-            <option>Seleced for Processing</option>
+            <option>Selected for Processing</option>
             <option>Under Processing</option>
             <option>Solution Defined</option>
             <option>Solved</option>
@@ -44,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="">Status Update</label>
-            <textarea name="status_text" id="" cols="20" rows="5" class="form-control"></textarea>
+            <textarea name="status_body" id="" cols="20" rows="5" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-block btn-primary">Save</button>
@@ -54,10 +58,18 @@
 </div>
 
 <div class="border p-2 px-3 mt-2 bg-light rounded">
-    <div class="">
-        <div class="font-weight-bold border-bottom pb-2">Status</div>
+    @foreach ( $formSideData['ViewComplient']['status'] as $item)
 
-        <div>text</div>
+    <div class="border-bottom pb-2 mb-2">
+        <div class="font-weight-light mb-2">
+            Status:
+            <span class="font-weight-bold pb-2"> {{$item['status']}}</span>
+        </div>
+
+
+        <div>{{$item['status_body']}}</div>
     </div>
+
+    @endforeach
 
 </div>

@@ -115,6 +115,6 @@ class ComplientController extends Controller
         $newStatus = new ComplientStatus($request->only(['status', 'status_body']));
         $newStatus->cid = $request->input("complient_id");
         $newStatus->save();
-        redirect()->back();
+        return redirect()->back();
     }
 }

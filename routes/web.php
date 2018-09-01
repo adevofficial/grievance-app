@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('/complient', 'ComplientController');
-Route::resource('/complient/status_create', 'ComplientController@status_create');
+Route::post('/complient/status_create', 'ComplientController@status_create');
 Route::resource('/user', 'UserController');
 Route::resource('/maper', 'MaperController');
