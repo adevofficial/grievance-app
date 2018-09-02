@@ -15,13 +15,17 @@ class ComplientController extends Controller
      */
     public function index(Request $request)
     {
-        $allComplaints = Complient::paginate(10);
+        $allComplaints = Complient::with(['status' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->paginate(10);
+
         $formSideBox = $request->query("form");
         $formSideData = [];
 
+
         switch ($formSideBox) {
-            case 'view':
-                $cid = $request->query('complient_id');
+            case 'viewer':
+                $cid = $request->query('complaint_id');
                 $ViewComplient = Complient::with('status')->find($cid);
                 $formSideData["ViewComplient"] = $ViewComplient;
                 break;

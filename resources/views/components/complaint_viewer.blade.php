@@ -58,7 +58,7 @@
 </div>
 
 <div class="border p-2 px-3 mt-2 bg-light rounded">
-    @foreach ( $formSideData['ViewComplient']['status'] as $item)
+    @isset($formSideData['ViewComplient']['status']) @foreach ( $formSideData['ViewComplient']['status'] as $item)
 
     <div class="border-bottom pb-2 mb-2">
         <div class="font-weight-light mb-2">
@@ -70,6 +70,6 @@
         <div>{{$item['status_body']}}</div>
     </div>
 
-    @endforeach
+    @endforeach @endisset
 
 </div>

@@ -14,6 +14,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Subject</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Created </th>
                     <th scope="col"></th>
                 </tr>
@@ -24,10 +25,15 @@
                     <th scope="row">{{$item['id']}}</th>
                     <td>{{$item["subject"]}}</td>
                     <td>{{$item["category"]}}</td>
+                    <td>
+                        @if (isset($item["status"][0])) {{$item["status"][0]['status']}} @else Pending @endif
+
+
+                    </td>
                     <td>{{$item["created_at"]}}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-success">Open</button>
+                            <a href="{{ action('ComplientController@index', ['form'=>'viewer','complaint_id'=>$item['id']]) }}" class="btn btn-success">Open</a>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                     </td>
@@ -42,8 +48,8 @@
         </div>
     </div>
     <div class="col-4 border-left pt-2">
-    @include('components.complaint_viewer')
     @includeWhen($formSideBox=="create",'components.complaint_form_sub',["formSideData"=>$formSideData])
+    @includeWhen($formSideBox=="viewer",'components.complaint_viewer',["formSideData"=>$formSideData])
     </div>
 </div>
 @endsection
