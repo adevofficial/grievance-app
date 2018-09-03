@@ -32,7 +32,7 @@
   <div class="form-group">
     <button type="submit" class="btn float-right btn-primary">
       <i class="fa fa-file" aria-hidden="true"></i>
-      File Complient</button>
+      File Complaint</button>
   </div>
 
 </form>

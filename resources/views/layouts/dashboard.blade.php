@@ -39,7 +39,7 @@
                         <a class="nav-link" href="{{ action('ComplientController@index') }}">
                             <i class="fa fa-file-text" aria-hidden="true"></i>
 
-              Complients
+              Complaints
             </a>
                     </li>
 
@@ -55,10 +55,12 @@
             </div>
         </nav>
         <main class="col-10">
+            <div class="hv-100">
 
-            @yield('content')
-
+                @yield('content')
+            </div>
         </main>
     </div>
 </div>
+    @include('components.main-footer')
 @endsection
