@@ -111,7 +111,8 @@ class ComplientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Complient::find($id)->delete();
+        return redirect()->back();
     }
 
     public function status_create(Request $request)
