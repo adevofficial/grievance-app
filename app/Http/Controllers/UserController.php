@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator;
 
 class UserController extends Controller
 {
@@ -12,10 +13,31 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $allUsers = User::paginate(10);
-        return view("user.index_user")->with(["allUsers" => $allUsers]);
+        $formSideBox = $request->query("form");
+        $formSideData = ["name" => "", "email" => "", "password" => ""];
+        switch ($formSideBox) {
+            case 'viewer':
+            case 'edit':
+                $uid = $request->query("user_id");
+                $formSideData = User::find($uid);
+                break;
+            case 'create':
+
+                break;
+            default:
+                $formSideBox = null;
+                break;
+        }
+
+
+        return view("user.index_user")->with([
+            "allUsers" => $allUsers,
+            "formSideBox" => $formSideBox,
+            "formSideData" => $formSideData
+        ]);
     }
 
     /**
@@ -36,7 +58,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $newUser = new User();
+        $newUser->password = bcrypt($request->input('password'));
+        $newUser->email = $request->input('email');
+        $newUser->name = $request->input('name');
+        $newUser->save();
+
+        return redirect()->back();
     }
 
     /**
