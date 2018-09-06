@@ -41,11 +41,39 @@
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
             Edit
                                 </a>
-                            <button class="btn btn-danger">
+
+
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item['id']}}">
                                     
                                     <i class="fa fa-ban" aria-hidden="true"></i>
                                     Delete
                                 </button>
+                        </div>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you want to delete ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <form action="{{action('UserController@destroy',['id'=>$item['id']])}}" method="post">
+                                            {{ csrf_field() }} {{method_field('DELETE')}}
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
