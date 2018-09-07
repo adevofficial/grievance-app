@@ -37,6 +37,6 @@
                 @elseif($formSideBox=="edit")
                 <div class="form-group"><input type="submit" value="Save" class="btn btn-success "></div>
 
-                @endif
+                {{method_field("PUT")}} @endif
             </div>
         </form>
