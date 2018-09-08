@@ -16,7 +16,6 @@ class MaperController extends Controller
     public function index(Request $request)
     {
         $allMapers = Maper::with("user")->paginate(10);
-        // return $allMapers;
         $formSideBox = $request->query("form");
         $formSideData = [];
 
@@ -104,6 +103,7 @@ class MaperController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Maper::find($id)->delete();
+        return redirect()->back();
     }
 }
