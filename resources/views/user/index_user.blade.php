@@ -31,23 +31,33 @@
                     <td>{{$item["name"]}}</td>
                     <td>{{$item["email"]}}</td>
                     <td>{{$item["created_at"]}}</td>
-                    <td style="width:100px">
+                    <td style="width:10px">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-primary" href="{{ action('MaperController@index', ['user_id'=>$item['id'],'form'=>'create']) }}">Map</a>
-                            <a href="{{action('UserController@index',['form'=>'viewer','user_id'=>$item['id']])}}" class="btn btn-success">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                    View</a>
-                            <a href="{{action('UserController@index',['form'=>'edit','user_id'=>$item['id']])}}" class="btn btn-secondary">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-            Edit
-                                </a>
 
 
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item['id']}}">
-                                    
+
+                            <div class="dropdown open">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId{{$item['id']}}" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId{{$item['id']}}">
+                                    <a class=" dropdown-item" href="{{ action('MaperController@index', ['user_id'=>$item['id'],'form'=>'create']) }}">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        Map</a>
+                                    <a href="{{action('UserController@index',['form'=>'viewer','user_id'=>$item['id']])}}" class=" dropdown-item">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        View</a>
+                                    <a href="{{action('UserController@index',['form'=>'edit','user_id'=>$item['id']])}}" class=" dropdown-item">
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                Edit
+                                                    </a>
+                                    <button class=" dropdown-item" data-toggle="modal" data-target="#exampleModal{{$item['id']}}">
                                     <i class="fa fa-ban" aria-hidden="true"></i>
                                     Delete
                                 </button>
+                                </div>
+                            </div>
                         </div>
 
 

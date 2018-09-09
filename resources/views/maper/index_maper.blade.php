@@ -24,17 +24,29 @@
                     <td>{{$item["user"]['name']}}</td>
                     <td>{{$item["type"]}}</td>
                     <td>{{$item["created_at"]}}</td>
-                    <td>
+                    <td style="width:10px;">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{action('MaperController@create')}}" class="btn btn-success">Open</a>
+                            <div class="dropdown open">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId{{$item['id']}}" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId{{$item['id']}}">
+                                    <a href="{{action('MaperController@create')}}" class="dropdown-item">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        Open</a>
 
 
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item['id']}}">
-                                    
-                                    <i class="fa fa-ban" aria-hidden="true"></i>
-                                    Delete
-                                </button>
+                                    <button class="dropdown-item" data-toggle="modal" data-target="#exampleModal{{$item['id']}}">
+                                                        
+                                                        <i class="fa fa-ban" aria-hidden="true"></i>
+                                                        Delete
+                                                    </button>
+                                </div>
+                            </div>
+
                         </div>
+
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">

@@ -3,9 +3,14 @@
 <div class="row h-100">
 
     <div class="col-8">
-        <h4 class="mt-4 mb-4">Complaints</h4>
-        <div class="btn-group mb-2 float-right" role="group" aria-label="Basic example">
-            <a class="btn btn-success" href="{{ action('ComplientController@index', ['form'=>'create']) }}">Create</a>
+        <div class="d-flex mt-4 mb-4 justify-content-between">
+
+            <h4 class="">Complaints</h4>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a class="btn btn-success" href="{{ action('ComplientController@index', ['form'=>'create']) }}">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    Create</a>
+            </div>
         </div>
         <table class="table">
             <thead class="thead-light">
@@ -30,16 +35,31 @@
 
                     </td>
                     <td>{{$item["created_at"]}}</td>
-                    <td>
+                    <td style="width:10px;">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ action('ComplientController@index', ['form'=>'viewer','complaint_id'=>$item['id']]) }}" class="btn btn-success">Open</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item['id']}}" data-compliant-id="{{$item['id']}}">Delete</button>
 
 
 
+                            <div class="dropdown open">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId{{$item['id']}}" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId{{$item['id']}}">
+                                    <a href="{{ action('ComplientController@index', ['form'=>'viewer','complaint_id'=>$item['id']]) }}" class="dropdown-item">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Open</a>
+                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#exampleModal{{$item['id']}}" data-compliant-id="{{$item['id']}}">
+                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                Delete</button>
+                                </div>
+                            </div>
 
 
                         </div>
+
+
+
                         <div class="modal fade" id="exampleModal{{$item['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog" role="document">

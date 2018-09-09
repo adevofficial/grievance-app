@@ -18,8 +18,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ action('MaperController@index',['id'=>'1']) }}">
-                            <i class="fa fa-file" aria-hidden="true"></i>
-              Maper
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+              Mail Maper
             </a>
                     </li>
 
