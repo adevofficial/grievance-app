@@ -16,6 +16,8 @@
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Nixie+One|Poiret+One|Lemon|Salsa" rel="stylesheet">
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -30,6 +32,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="{{ asset('js/popper.1.14.3.min.js') }}"></script>
+    <script src="{{ asset('js/typer.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 

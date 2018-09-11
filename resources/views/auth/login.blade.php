@@ -1,8 +1,8 @@
 @extends('layouts.main') 
 @section('content')
-<div class="container">
+<div class="pt-5 container">
 
-    <div class="card mt-5 mx-auto w-50">
+    <div class="card  mx-auto w-50">
         <div class="card-header">Login</div>
         <div class="card-body">
 

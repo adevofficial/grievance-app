@@ -2,6 +2,7 @@ php artisan make:migration:schema create_complients_table --schema="subject:stri
 php artisan make:migration:schema create_mapers_table --schema="uid:integer, type:string"
 php artisan make:migration:schema create_maper_selected_table --schema="mapid:integer, category_id:integer"
 php artisan make:migration:schema create_complient_status_table --schema="cid:integer, status:string, status_body:text"
+php artisan make:migration:schema add_user_id_to_complients_table --schema="user_id:integer"
 
 
 username:string

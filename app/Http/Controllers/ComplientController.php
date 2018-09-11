@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Complient;
 use App\ComplientStatus;
+use Illuminate\Support\Facades\Auth;
 
 class ComplientController extends Controller
 {
@@ -63,7 +64,7 @@ class ComplientController extends Controller
 
         $newComplient = new Complient($input);
 
-        $newComplient->save();
+        Auth::user()->complients()->save($newComplient);
 
         return redirect()->back();
     }

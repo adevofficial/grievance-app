@@ -10,12 +10,15 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{ action('DashboardController@index') }}">
 <i class="fa fa-tachometer" aria-hidden="true"></i>
 
               Dashboard 
             </a>
                     </li>
+
+                    @role('admin')
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ action('MaperController@index',['id'=>'1']) }}">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -35,6 +38,9 @@
               Users Manage
             </a>
                     </li>
+
+
+                    @endrole
                     <li class="nav-item">
                         <a class="nav-link" href="{{ action('ComplientController@index') }}">
                             <i class="fa fa-file-text" aria-hidden="true"></i>
@@ -43,12 +49,15 @@
             </a>
                     </li>
 
+                    @role('admin')
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fa fa-files-o" aria-hidden="true"></i>
               Reports
             </a>
                     </li>
+                    @endrole
 
                 </ul>
 
