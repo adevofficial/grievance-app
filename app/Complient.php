@@ -13,4 +13,9 @@ class Complient extends Model
     {
         return $this->hasMany('App\ComplientStatus', 'cid', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 }

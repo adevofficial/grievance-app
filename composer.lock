@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e06a3c3c13cc7ce23f2c1b8bbfe6842",
+    "content-hash": "09c4bcf29832ed2afc72dc9907e51ab7",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1060,25 +1060,25 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "1.17.0",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "71b33c7f57f50bda7a67830f598f4701f50783cf"
+                "reference": "d02ac59023c04061e9298ec8b307601502cb9331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/71b33c7f57f50bda7a67830f598f4701f50783cf",
-                "reference": "71b33c7f57f50bda7a67830f598f4701f50783cf",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/d02ac59023c04061e9298ec8b307601502cb9331",
+                "reference": "d02ac59023c04061e9298ec8b307601502cb9331",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "~5.1.0|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0",
-                "laravel/framework": "~5.1.11|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/contracts": "~5.1.0|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "laravel/framework": "~5.1.11|~5.2.0|~5.3.0|~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.3.0",
+                "orchestra/testbench": "^3.3.0 <3.8.0",
                 "phpunit/phpunit": "^5.7.8|~6.0|^7.0"
             },
             "type": "library",
@@ -1115,7 +1115,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2018-08-24T18:00:14+00:00"
+            "time": "2019-03-01T19:40:31+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

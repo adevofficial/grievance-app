@@ -20,6 +20,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Created </th>
                     <th scope="col"></th>
                 </tr>
@@ -30,6 +31,9 @@
                     <th scope="row">{{$item['id']}}</th>
                     <td>{{$item["name"]}}</td>
                     <td>{{$item["email"]}}</td>
+                    <td>
+                        @foreach ($item["roles"] as $role) {{ ucfirst( $role['name'] ) }} @endforeach
+                    </td>
                     <td>{{$item["created_at"]}}</td>
                     <td style="width:10px">
                         <div class="btn-group" role="group" aria-label="Basic example">

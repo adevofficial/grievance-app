@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $allUsers = User::paginate(10);
+        $allUsers = User::with('roles')->paginate(10);
         $formSideBox = $request->query("form");
         $formSideData = ["name" => "", "email" => "", "password" => ""];
         switch ($formSideBox) {

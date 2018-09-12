@@ -16,9 +16,18 @@ class ComplientController extends Controller
      */
     public function index(Request $request)
     {
-        $allComplaints = Complient::with(['status' => function ($query) {
-            $query->orderBy('created_at', 'desc');
-        }])->paginate(10);
+
+        if (Auth::user()->hasRole('admin')) {
+            $allComplaints = Complient::with(['status' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            }, 'users'])->paginate(10);
+        } else {
+            $allComplaints = Auth::user()->complients()->with(['status' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            }])->paginate(10);
+        }
+
+
 
         $formSideBox = $request->query("form");
         $formSideData = [];

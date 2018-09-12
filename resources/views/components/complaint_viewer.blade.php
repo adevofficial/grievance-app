@@ -28,8 +28,16 @@
             {{$formSideData['ViewComplient']['message']}}
         </div>
     </div>
+
+    <div>
+        <div class="font-weight-bold">Created By</div>
+        <div>
+            {{$formSideData['ViewComplient']['users']['name']}}
+        </div>
+    </div>
 </div>
 
+@can('status_create')
 
 <div class="border p-2 px-3 mt-2 bg-light rounded">
 
@@ -57,19 +65,26 @@
     </form>
 </div>
 
+@endcan @isset($formSideData['ViewComplient']['status'])
 <div class="border p-2 px-3 mt-2 bg-light rounded">
-    @isset($formSideData['ViewComplient']['status']) @foreach ( $formSideData['ViewComplient']['status'] as $item)
+
+    @forelse ( $formSideData['ViewComplient']['status'] as $item)
 
     <div class="border-bottom pb-2 mb-2">
         <div class="font-weight-light mb-2">
             Status:
             <span class="font-weight-bold pb-2"> {{$item['status']}}</span>
         </div>
-
-
         <div>{{$item['status_body']}}</div>
     </div>
-
-    @endforeach @endisset
-
+    @empty
+    <div class="border-bottom pb-2 mb-2">
+        <div class="font-weight-light mb-2">
+            Status:
+            <span class="font-weight-bold pb-2"> Pending</span>
+        </div>
+        <div>Pending no progress reported</div>
+    </div>
+    @endforelse
 </div>
+@endisset
