@@ -11,3 +11,7 @@ age:integer
 published_at:date
 excerpt:text:nullable
 email:string:unique:default('foo@example.com')
+
+Permissions
+status_create
+admin

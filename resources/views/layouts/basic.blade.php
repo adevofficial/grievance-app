@@ -33,7 +33,16 @@
 
     <script src="{{ asset('js/popper.1.14.3.min.js') }}"></script>
     <script src="{{ asset('js/typer.js') }}"></script>
+    <script src="{{ asset('js/timeago.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <script>
+        timeago.render($('time'));
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+    </script>
+
 </body>
 
 </html>

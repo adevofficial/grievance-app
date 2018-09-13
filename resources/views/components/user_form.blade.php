@@ -21,22 +21,38 @@
             <div class="form-group">
                 <label for="">Email</label>
                 <input name="email" type="text" placeholder="Your @ address ..." value="{{$formSideData['email']}}" class="form-control"></div>
-            @if ($formSideBox!="viewer")
 
             <div class="form-group">
-                <label for="">Password</label>
-                <input name="password" type="password" placeholder="Key to open account ..." class="form-control">
-                <small id="emailHelpId" class="form-text text-muted">Setting new value will reset password <br> Keep filed empty for not reseting</small>
-            </div>
-            @endif
+                <label for="">Role</label>
+                <select name="role" class="form-control" id="">
+                    <option value="">Select Role</option>
+                    @foreach (['admin',"user",'evaluator'] as $roles)
+                        
+                <option 
+                @if ($formSideBox=="edit"||$formSideBox=="viewer")
 
-            <div class="d-flex justify-content-between">
-                @if ($formSideBox=="create")
-                <div class="form-group"><input type="submit" value="Save" class="btn btn-success "></div>
-                <div class="form-group"><input type="submit" value="Save & Mail" class="btn btn-primary"></div>
-                @elseif($formSideBox=="edit")
-                <div class="form-group"><input type="submit" value="Save" class="btn btn-success "></div>
+                {{$formSideData->hasRole($roles)?"selected":""}}    
+                @endif
 
-                {{method_field("PUT")}} @endif
-            </div>
+                value="{{$roles}}">{{ucfirst($roles)}}</option>
+                    @endforeach
+
+                </select> @if ($formSideBox!="viewer")
+
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input name="password" type="password" placeholder="Key to open account ..." class="form-control">
+                    <small id="emailHelpId" class="form-text text-muted">Setting new value will reset password <br> Keep filed empty for not reseting</small>
+                </div>
+                @endif
+
+                <div class="d-flex justify-content-between">
+                    @if ($formSideBox=="create")
+                    <div class="form-group"><input type="submit" value="Save" class="btn btn-success "></div>
+                    <div class="form-group"><input type="submit" value="Save & Mail" class="btn btn-primary"></div>
+                    @elseif($formSideBox=="edit")
+                    <div class="form-group"><input type="submit" value="Save" class="btn btn-success "></div>
+
+                    {{method_field("PUT")}} @endif
+                </div>
         </form>

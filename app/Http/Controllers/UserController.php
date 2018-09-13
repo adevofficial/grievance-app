@@ -63,6 +63,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
+            'role' => 'required|string',
         ]);
 
         $newUser = new User();
@@ -70,6 +71,8 @@ class UserController extends Controller
         $newUser->email = $request->input('email');
         $newUser->name = $request->input('name');
         $newUser->save();
+
+        $newUser->syncRoles([$request->input('role')]);
 
         return redirect()->back();
     }
@@ -123,7 +126,10 @@ class UserController extends Controller
         }
         $newUser->email = $request->input('email');
         $newUser->name = $request->input('name');
+
         $newUser->save();
+
+        $newUser->syncRoles([$request->input('role')]);
 
         return redirect()->back();
     }
