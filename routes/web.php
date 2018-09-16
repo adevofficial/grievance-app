@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +24,5 @@ Route::resource('/complient', 'ComplientController');
 Route::post('/complient/status_create', 'ComplientController@status_create');
 Route::resource('/user', 'UserController');
 Route::resource('/maper', 'MaperController');
+Route::get('/reports', 'ReportsController@index');
+Route::get('/reports/monthly_report', 'ReportsController@monthly_report');

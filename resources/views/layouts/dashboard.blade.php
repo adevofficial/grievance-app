@@ -52,7 +52,7 @@
                     @role('admin')
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ action('ReportsController@index') }}">
                             <i class="fa fa-files-o" aria-hidden="true"></i>
               Reports
             </a>
