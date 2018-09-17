@@ -33,7 +33,6 @@ class ReportsController extends Controller
             ->selectRaw('`complients`.`id` as ID,`subject` as `Subject`,`category` as `Category`,`message` as `Message`,`name` as `Name`,`email` as `Email`,`complients`.`created_at` as `Created`')
             ->get();
 
-
         Excel::create("Monthly Grievance Report($monthName)", function ($excel) use ($MontlyComplaints, $monthName) {
             $excel->sheet($monthName, function ($sheet) use ($MontlyComplaints, $monthName) {
                 $sheet->fromModel($MontlyComplaints);
@@ -59,5 +58,47 @@ class ReportsController extends Controller
     }
 
     public function yearly_report(Request $request)
-    { }
+    {
+        $year = $request->input('year');
+
+        $Months = Complient::selectRaw(DB::raw('MONTH(`created_at`) as month'))
+            ->whereYear('created_at', $year)
+            ->groupBy('month')
+            ->get();
+
+        Excel::create("Yearly Grievance Report($year)", function ($excel) use ($year, $Months) {
+            foreach ($Months as $key => $Month) {
+                $Month = $Month['month'];
+                $monthName = date('F', mktime(0, 0, 0, $Month, 10));
+
+                $excel->sheet($monthName, function ($sheet) use ($Month, $monthName) {
+
+                    $MontlyComplaints =   Complient::join('users', 'complients.user_id', '=', 'users.id')
+                        ->whereMonth("complients.created_at", $Month)
+                        ->selectRaw('`complients`.`id` as ID,`subject` as `Subject`,`category` as `Category`,`message` as `Message`,`name` as `Name`,`email` as `Email`,`complients`.`created_at` as `Created`')
+                        ->get();
+
+
+                    $sheet->fromModel($MontlyComplaints);
+                    $sheet->prependRow(array(
+                        ""
+                    ));
+                    $sheet->prependRow(array(
+                        "Yearly Grievance Report - $monthName",
+                    ));
+
+                    $sheet->mergeCells('A1:G1');
+                    $sheet->cell('A1', function ($cell) {
+                        $cell->setFontSize('14');
+                        $cell->setAlignment('center');
+                    });
+
+                    $sheet->cell('A3:G3', function ($cell) {
+                        $cell->setFontWeight('bold');
+                        $cell->setAlignment('center');
+                    });
+                });
+            }
+        })->export('xlsx');
+    }
 }

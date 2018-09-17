@@ -26,3 +26,4 @@ Route::resource('/user', 'UserController');
 Route::resource('/maper', 'MaperController');
 Route::get('/reports', 'ReportsController@index');
 Route::get('/reports/monthly_report', 'ReportsController@monthly_report');
+Route::get('/reports/yearly_report', 'ReportsController@yearly_report');

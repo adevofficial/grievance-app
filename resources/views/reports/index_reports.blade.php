@@ -34,26 +34,30 @@
         </div>
 
         <div class="card m-2" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Yearly Report</h5>
-                <p class="card-text">Yearly Report constit of specific year submited compliants where each moth is seperated</p>
+            <form action="{{action('ReportsController@yearly_report')}}" method="get">
 
-                <div class="form-group">
+                <div class="card-body">
+                    <h5 class="card-title">Yearly Report</h5>
+                    <p class="card-text">Yearly Report constit of specific year submited compliants where each moth is seperated</p>
 
-                    <select name="" id="" class="form-control">
+                    <div class="form-group">
+
+                        <select name="year" id="" class="form-control">
                             
                             <option value="">Year</option>
                             @foreach ($Year_Avaliable as $year)
-                            <option value="{{$year}}">{{date('F', mktime(0, 0, 0, $year['year'], 10))}}</option>
+                            <option value="{{$year['year']}}">{{ $year['year']}}</option>
                             @endforeach
                                 
                         </select>
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer d-flex">
+                <div class="card-footer d-flex">
 
-                <button class="btn btn-success btn-block">Download</button>
-            </div>
+                    <button class="btn btn-success btn-block">Download</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
