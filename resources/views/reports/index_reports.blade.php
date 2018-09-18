@@ -26,8 +26,14 @@
                     </select>
                     </div>
                 </div>
-                <div class="card-footer d-flex">
-                    <button class="btn btn-success btn-block">Download</button> {{-- <button class="btn btn-warning btn-block mt-0 ml-2">Mail</button>                    --}}
+                <div class="card-footer">
+                    <button type="submit" value="xlsx" name="type" class="btn btn-success btn-block">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                        Download (xlsx)</button>
+                    <button type="submit" value="csv" name="type" class="btn btn-info btn-block">
+                        <i class="fas fa-file-csv fa-sm  "></i>
+                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                        Download (csv)</button>
                 </div>
             </form>
 
@@ -52,9 +58,14 @@
                         </select>
                     </div>
                 </div>
-                <div class="card-footer d-flex">
-
-                    <button class="btn btn-success btn-block">Download</button>
+                <div class="card-footer ">
+                    <button type="submit" value="xlsx" name="type" class="btn btn-success btn-block">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                Download (xlsx)</button>
+                    <button type="submit" value="csv" name="type" class="btn btn-info btn-block ">
+                                <i class="fas fa-file-csv fa-sm  "></i>
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                Download (csv)</button>
                 </div>
             </form>
 

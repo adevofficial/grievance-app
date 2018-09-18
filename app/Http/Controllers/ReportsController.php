@@ -26,6 +26,8 @@ class ReportsController extends Controller
     public function monthly_report(Request $request)
     {
         $month = $request->input('month');
+        $type = $request->input('type');
+
         $monthName = date('F', mktime(0, 0, 0, $month, 10));
 
         $MontlyComplaints =   Complient::join('users', 'complients.user_id', '=', 'users.id')
@@ -33,7 +35,7 @@ class ReportsController extends Controller
             ->selectRaw('`complients`.`id` as ID,`subject` as `Subject`,`category` as `Category`,`message` as `Message`,`name` as `Name`,`email` as `Email`,`complients`.`created_at` as `Created`')
             ->get();
 
-        Excel::create("Monthly Grievance Report($monthName)", function ($excel) use ($MontlyComplaints, $monthName) {
+        $ExcelFile = Excel::create("Monthly Grievance Report($monthName)", function ($excel) use ($MontlyComplaints, $monthName) {
             $excel->sheet($monthName, function ($sheet) use ($MontlyComplaints, $monthName) {
                 $sheet->fromModel($MontlyComplaints);
                 $sheet->prependRow(array(
@@ -54,19 +56,32 @@ class ReportsController extends Controller
                     $cell->setAlignment('center');
                 });
             });
-        })->export('xlsx');
+        });
+
+        if ($type == "xlsx") {
+            $ExcelFile->export('xlsx');
+        } else {
+            $ExcelFile->export('csv');
+        }
     }
 
     public function yearly_report(Request $request)
     {
+
+        $this->validate($request, [
+            "year" => "required|numeric",
+            "type" => "required|string"
+        ]);
+
         $year = $request->input('year');
+        $type = $request->input('type');
 
         $Months = Complient::selectRaw(DB::raw('MONTH(`created_at`) as month'))
             ->whereYear('created_at', $year)
             ->groupBy('month')
             ->get();
 
-        Excel::create("Yearly Grievance Report($year)", function ($excel) use ($year, $Months) {
+        $ExcelFile =  Excel::create("Yearly Grievance Report($year)", function ($excel) use ($year, $Months) {
             foreach ($Months as $key => $Month) {
                 $Month = $Month['month'];
                 $monthName = date('F', mktime(0, 0, 0, $Month, 10));
@@ -99,6 +114,12 @@ class ReportsController extends Controller
                     });
                 });
             }
-        })->export('xlsx');
+        });
+
+        if ($type == "xlsx") {
+            $ExcelFile->export('xlsx');
+        } else {
+            $ExcelFile->export('csv');
+        }
     }
 }
