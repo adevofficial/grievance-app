@@ -9,3 +9,7 @@
 .hv-80 {
   min-height: 80vh;
 }
+
+.credits-link:hover {
+  text-decoration: none;
+}

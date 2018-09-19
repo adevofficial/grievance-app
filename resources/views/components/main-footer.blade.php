@@ -3,6 +3,9 @@
         <i class="fa fa-copyright" aria-hidden="true"></i> 2019 CEP
     </div>
     <div>
-        Code with <i class="fa fa-heart text-danger" aria-hidden="true"></i> ADev
+
+        <a href="http://adevofficial.github.io" class="credits-link">
+            Code with <i class="fa fa-heart text-danger" aria-hidden="true"></i>        ADev
+        </a>
     </div>
 </div>
